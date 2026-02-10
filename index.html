@@ -56,21 +56,21 @@
 
         .logo-title {
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-gold);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .logo-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
             font-weight: 300;
         }
 
         .container {
-            max-width: 800px;
-            margin: 40px auto;
+            max-width: 600px;
+            margin: 30px auto;
             padding: 0 20px;
             flex: 1;
             text-align: center;
@@ -78,7 +78,7 @@
 
         .control-panel {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -86,24 +86,23 @@
 
         .input-group {
             position: relative;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .url-input {
             width: 100%;
-            padding: 20px 50px 20px 20px;
+            padding: 15px 45px 15px 15px;
             border: 2px solid #eee;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-family: 'Tajawal', sans-serif;
             transition: all 0.3s ease;
             outline: none;
             background: #fcfcfc;
-            text-align: left;
+            text-align: left; /* الرابط يظهر من اليسار */
             direction: ltr;
         }
         
-        /* جعل النص العربي في الحقل يظهر بشكل صحيح */
         .url-input::placeholder {
             text-align: right;
             direction: rtl;
@@ -111,16 +110,16 @@
 
         .url-input:focus {
             border-color: var(--primary-gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
         }
 
         .input-icon {
             position: absolute;
-            right: 20px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-gold);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             z-index: 10;
         }
 
@@ -128,49 +127,44 @@
             background: linear-gradient(45deg, var(--primary-gold), #e0c158);
             color: white;
             border: none;
-            padding: 15px 50px;
-            font-size: 1.2rem;
+            padding: 12px 40px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-family: 'Tajawal', sans-serif;
-            display: inline-block;
-            text-decoration: none;
+            transition: transform 0.2s;
+            width: 100%;
         }
 
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        .action-btn:active {
+            transform: scale(0.98);
         }
 
-        .instructions {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
+        /* رسالة التعليمات التي تظهر بعد الضغط */
+        .status-message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
             border-radius: 10px;
-            font-size: 0.95rem;
-            color: #555;
-            display: none; /* مخفي افتراضيا */
+            color: #2e7d32;
+            display: none;
+            font-size: 0.9rem;
+            animation: fadeIn 0.5s;
         }
 
-        .step {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .step i { color: var(--primary-gold); }
 
         footer {
             background-color: var(--primary-dark);
             color: white;
-            padding: 20px 0;
+            padding: 15px 0;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: auto;
             border-top: 3px solid var(--primary-gold);
         }
@@ -195,27 +189,25 @@
 
     <div class="container">
         <div class="control-panel">
-            <h3 style="margin-bottom: 25px; color: var(--primary-dark);">ضع رابط الفيديو هنا</h3>
+            <h3 style="margin-bottom: 20px; color: var(--primary-dark);">تحميل فيديو من فيسبوك</h3>
             
             <div class="input-group">
                 <i class="fas fa-link input-icon"></i>
-                <input type="text" class="url-input" id="videoUrl" placeholder="الصق رابط فيسبوك هنا..." oninput="checkInput()">
+                <input type="text" class="url-input" id="videoUrl" placeholder="الصق رابط الفيديو هنا...">
             </div>
 
-            <button class="action-btn" onclick="processDownload()">
-                <i class="fas fa-cloud-download-alt"></i> بدء التحميل
+            <button class="action-btn" onclick="startProcess()">
+                <i class="fas fa-rocket ms-2"></i> الذهاب للتحميل
             </button>
             
-            <div id="instructions" class="instructions">
-                <div class="step">
-                    <i class="fas fa-check-circle"></i>
-                    <span>تم نسخ الرابط تلقائياً!</span>
-                </div>
-                <div class="step">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>سيفتح الموقع في نافذة جديدة، قم بلصق الرابط هناك واضغط Download.</span>
-                </div>
+            <div id="statusMsg" class="status-message">
+                <strong><i class="fas fa-check-circle"></i> تم نسخ الرابط!</strong><br>
+                سيتم فتح موقع التحميل الآن.. فقط اضغط <b>"لصق"</b> هناك.
             </div>
+        </div>
+        
+        <div style="margin-top: 20px; color: #777; font-size: 0.8rem;">
+            <p>يدعم التحميل بجودة عالية MP4 والصوتيات MP3</p>
         </div>
     </div>
 
@@ -224,36 +216,39 @@
     </footer>
 
     <script>
-        function checkInput() {
-            // يمكن إضافة تحقق من صحة الرابط هنا مستقبلاً
-        }
-
-        function processDownload() {
+        function startProcess() {
             var input = document.getElementById('videoUrl');
             var url = input.value.trim();
+            var msgDiv = document.getElementById('statusMsg');
 
             if (!url) {
                 alert('الرجاء وضع رابط الفيديو أولاً!');
                 return;
             }
 
-            // 1. نسخ الرابط إلى الحافظة تلقائياً لتسهيل الأمر على المستخدم
+            // 1. نسخ الرابط تلقائياً
             input.select();
-            input.setSelectionRange(0, 99999); /* للموبايل */
+            input.setSelectionRange(0, 99999); // للموبايل
+            
             navigator.clipboard.writeText(url).then(function() {
-                // إظهار التعليمات
-                document.getElementById('instructions').style.display = 'block';
-                
-                // 2. فتح موقع التحميل في نافذة جديدة
-                // نستخدم window.open لمحاكاة تطبيق منفصل
-                setTimeout(function(){
-                    window.open("https://fdownloader.net/ar", "_blank");
-                }, 1000);
-
-            }, function(err) {
-                // في حال فشل النسخ التلقائي، نفتح الموقع مباشرة
-                 window.open("https://fdownloader.net/ar", "_blank");
+                // نجاح النسخ
+                showSuccessAndRedirect();
+            }, function() {
+                // فشل النسخ (احتياط)
+                showSuccessAndRedirect();
             });
+        }
+
+        function showSuccessAndRedirect() {
+            var msgDiv = document.getElementById('statusMsg');
+            
+            // إظهار رسالة النجاح
+            msgDiv.style.display = 'block';
+            
+            // الانتظار ثانية واحدة ليقرأ المستخدم الرسالة ثم فتح الموقع
+            setTimeout(function() {
+                window.open("https://fdownloader.net/ar", "_blank");
+            }, 1500);
         }
     </script>
 </body>
