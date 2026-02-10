@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسك طيبة الأثر - تحميل المحتوى</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #d4af37; /* لون المسك الذهبي */
+            --primary-dark: #1a252f;
+            --accent-cream: #f9f7f2;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--accent-cream);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* تنسيق الهيدر الفاخر */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2c3e50 100%);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-gold), #fff, var(--primary-gold));
+        }
+
+        .logo-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .logo-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* بطاقة التحكم */
+        .control-panel {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 20px 50px 20px 20px;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #fcfcfc;
+        }
+
+        .url-input:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(45deg, var(--primary-gold), #e0c158);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .info-text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* منطقة التنزيل المخفية (Iframe) */
+        .download-area {
+            width: 100%;
+            height: 700px; /* ارتفاع مناسب لإظهار الموقع */
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+            display: none; /* مخفي في البداية */
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        /* التذييل */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+            border-top: 3px solid var(--primary-gold);
+        }
+
+        .footer-heart {
+            color: #e74c3c;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* للموبايل */
+        @media (max-width: 600px) {
+            .logo-title { font-size: 2rem; }
+            .control-panel { padding: 20px; }
+            .action-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-title">مسك طيبة الأثر</div>
+        <div class="logo-subtitle">خدمة تحميل المحتوى الهادف بجودة عالية</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="control-panel">
+            <h3 style="margin-bottom: 25px; color: var(--primary-dark);">ضع رابط الفيديو هنا</h3>
+            
+            <div class="input-group">
+                <i class="fas fa-link input-icon"></i>
+                <input type="text" class="url-input" id="videoUrl" placeholder="الصق رابط فيسبوك (Facebook Link)...">
+            </div>
+
+            <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="type" checked> فيديو (MP4)
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="type"> صوتية (MP3)
+                </label>
+            </div>
+
+            <button class="action-btn" onclick="openDownloader()">
+                <i class="fas fa-cloud-download-alt"></i> تجهيز التنزيل
+            </button>
+            
+            <p class="info-text">سيتم معالجة الرابط بأعلى جودة وتوفير خيارات التحميل المباشر.</p>
+        </div>
+
+        <div id="loader" style="display:none; color: var(--primary-gold); margin: 20px;">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <p>جاري الاتصال بالسيرفر...</p>
+        </div>
+
+        <iframe src="" class="download-area" id="hiddenFrame" title="Download Service"></iframe>
+
+    </div>
+
+    <footer>
+        <p>الحقوق محفوظة 2026 تم تطويره عن طريق المطور لوزة + سكرة = اخوة <i class="fas fa-heart footer-heart"></i></p>
+    </footer>
+
+    <script>
+        function openDownloader() {
+            var inputUrl = document.getElementById('videoUrl').value;
+            var frame = document.getElementById('hiddenFrame');
+            var loader = document.getElementById('loader');
+
+            // إظهار اللودر
+            loader.style.display = 'block';
+            
+            // محاكاة تحميل بسيط
+            setTimeout(function() {
+                loader.style.display = 'none';
+                frame.style.display = 'block';
+                
+                // نقوم بتحميل الموقع داخل الصفحة
+                // ملاحظة: الموقع لا يدعم نقل الرابط مباشرة عبر العنوان، لذلك سيفتح الموقع وعلى المستخدم اللصق
+                // لكن المستخدم لن يشعر أنه خرج من موقعك لأن الرابط في الأعلى سيبقى كما هو
+                frame.src = "https://fdownloader.net/ar";
+
+                // توجيه المستخدم للصق الرابط مرة أخرى في النافذة الجديدة
+                // (هذا بسبب قيود الأمان في المتصفحات التي تمنعنا من الكتابة داخل موقع آخر)
+                alert("تم فتح بوابة التنزيل في الأسفل بنجاح.\nيرجى لصق الرابط في الخانة التي ظهرت بالأسفل واختيار الجودة.");
+                
+                // تمرير الشاشة للأسفل ليرى المستخدم مكان التحميل
+                frame.scrollIntoView({behavior: "smooth"});
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
